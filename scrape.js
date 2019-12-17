@@ -1,4 +1,4 @@
-const request = require('request-promise');
+const request = require('request-promise-native');
 const delay = require('delay');
 const Datastore = require('nedb')
 const fs = require('fs');
@@ -84,6 +84,7 @@ const objectify = ( obj, [ k, v ] ) => ( obj[ k ] = v, obj );
             eval(jsString);
  
             for(classData of classesList){
+               console.log(classData.classNumber)
                tdb.update({classNumber: classData.classNumber}, classData, { upsert: true });
                rdb.update({bldgName: classData.bldgName, room: classData.room}, classData, { upsert: true });
             }
