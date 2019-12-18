@@ -51,17 +51,17 @@ const objectify = ( obj, [ k, v ] ) => ( obj[ k ] = v, obj );
 
 (async () => {
    try {
-      
+
       var classesList = [];
 
       var response = await baseRequest('https://pass.calpoly.edu/main.html');
       const $ = cheerio.load(response)
       var quarter = $('.pageTitleQuarter').text().trim()
-      
+
       if(quarter.length == 0) {
          throw new Exception("Invalid Page Title quarter")
       }
-      
+
       fs.writeFileSync('info.json', JSON.stringify({
          quarterName: quarter
       }));
@@ -82,9 +82,8 @@ const objectify = ( obj, [ k, v ] ) => ( obj[ k ] = v, obj );
 
             var jsString = extract(courseLocationPage, start, end);
             eval(jsString);
- 
+
             for(classData of classesList){
-               console.log(classData.classNumber)
                tdb.update({classNumber: classData.classNumber}, classData, { upsert: true });
                rdb.update({bldgName: classData.bldgName, room: classData.room}, classData, { upsert: true });
             }
@@ -93,10 +92,10 @@ const objectify = ( obj, [ k, v ] ) => ( obj[ k ] = v, obj );
             await delay(50);
          }
 
-         await baseRequest('https://pass.calpoly.edu/removeAllCourses.json'); 
+         await baseRequest('https://pass.calpoly.edu/removeAllCourses.json');
          await delay(1000);
       };
-       
+
    } catch (e) {
        console.error(e)
    }
