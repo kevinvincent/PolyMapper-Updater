@@ -18,7 +18,8 @@
     "scrape": "node scrape.js",
     "postprocess": "node postprocess.js",
     "build": "node build.js",
-    "push": "node push.js"
+    "push": "node push.js",
+    "all": "npm run pull && npm run scrape && npm run postprocess && npm run build && npm run push"
   },
   "repository": {
     "type": "git",
