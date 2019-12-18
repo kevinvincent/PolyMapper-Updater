@@ -4,7 +4,7 @@ const querystring = require('querystring');
 
 const git = simpleGit();
 
-const USER = process.env.GITHUB_USER;
+const USER = process.env.GITHUB_USERNAME;
 const PASS = querystring.escape(process.env.GITHUB_PASSWORD);
 const REPO = 'github.com/kevinvincent/Cal-Poly-Class-Locator.git';
 const remote = `https://${USER}:${PASS}@${REPO}`;
