@@ -21,7 +21,9 @@ manifest.push({
    "updated" : Date.now()
 })
 
-fs.writeFileSync("./source/dataset/manifest.json", JSON.stringify(manifest))
+let manifestStr = JSON.stringify(manifest)
+fs.writeFileSync("./source/dataset/manifest.json", manifestStr)
+fs.writeFileSync("./source/js/manifest.js", `var manifest = ${manifestStr}`)
 
 fs.copyFileSync("rooms.db",`./source/dataset/rooms.db`)
 
