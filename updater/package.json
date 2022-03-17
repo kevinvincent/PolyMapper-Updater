@@ -10,7 +10,7 @@
     "nedb": "^1.8.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
-    "simple-git": "^1.129.0"
+    "simple-git": "^3.3.0"
   },
   "devDependencies": {},
   "scripts": {
